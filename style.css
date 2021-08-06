@@ -3,3 +3,7 @@
     height: 720px;
     background-color: rgb(145, 245, 245);
 }
+
+#square {
+    border: 1px solid black;
+}
