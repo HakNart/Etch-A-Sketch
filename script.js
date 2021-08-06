@@ -1,6 +1,8 @@
 // Set the color variable
 let color = '#000000';
 let isColorRandom = false;
+let isStandard = true;
+let isGradient = false;
 
 // Create 16x16 pixel squares on the for the sketch pad
 const sketchPad = document.getElementById("sketch-pad");
