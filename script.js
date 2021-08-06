@@ -3,9 +3,10 @@ const sketchPad = document.getElementById("sketch-pad");
 
 function createSquare() {
     const square = document.createElement("div");
+    square.classList.add("square");
     return square;
 }
 
-for (let i = 0; i < 16; i++) {
+for (let i = 0; i < 16**2; i++) {
     sketchPad.appendChild(createSquare());
 }
