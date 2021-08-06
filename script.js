@@ -56,5 +56,4 @@ eraser.addEventListener('click', eraserMode)
 function eraserMode() {
     isColorRandom = false;
     color = getComputedStyle(sketchPad).backgroundColor;
-    console.log(color);
 }
