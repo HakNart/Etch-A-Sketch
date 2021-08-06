@@ -1,7 +1,7 @@
 #sketch-pad {
     width: 720px;
     height: 720px;
-    background-color: rgb(145, 245, 245);
+    background-color: #fff;
     display: grid;
     grid-template-columns: repeat(16, 1fr);
     grid-template-rows: repeat(16, 1fr);

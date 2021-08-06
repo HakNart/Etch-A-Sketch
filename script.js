@@ -5,8 +5,8 @@ let isStandard = true;
 let isGradient = false;
 
 // Create 16x16 pixel squares on the for the sketch pad
-const sketchPad = document.getElementById("sketch-pad");
-
+const sketchPad = document.querySelector("#sketch-pad");
+console.log(getComputedStyle(sketchPad).backgroundColor);
 function createSquare() {
     const square = document.createElement("div");
     square.classList.add("square");
@@ -36,13 +36,25 @@ colorPicker.addEventListener("change", function(event) {
 const rainbow = document.getElementById("rainbow");
 rainbow.addEventListener('click', rainbowColor)
 
+// Set flag for random color to true
 function rainbowColor() {
     isColorRandom = true;
 }
 
+// Create random rgb value for colors
 function randomizeColor() {
     let r = Math.floor(Math.random() * 255);
     let g = Math.floor(Math.random() * 255);
     let b = Math.floor(Math.random() * 255);
     return `rgb(${r}, ${g}, ${b})`;
+}
+
+// Listen for eraser mode
+const eraser = document.getElementById('eraser');
+eraser.addEventListener('click', eraserMode)
+
+function eraserMode() {
+    isColorRandom = false;
+    color = getComputedStyle(sketchPad).backgroundColor;
+    console.log(color);
 }
