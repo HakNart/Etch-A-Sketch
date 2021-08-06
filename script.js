@@ -10,3 +10,8 @@ function createSquare() {
 for (let i = 0; i < 16**2; i++) {
     sketchPad.appendChild(createSquare());
 }
+
+// Listen for mouse over a square and change its color
+sketchPad.addEventListener('mouseover', function(event) {
+    event.target.style['background-color'] = "black";
+})
