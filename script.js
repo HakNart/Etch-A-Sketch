@@ -32,7 +32,8 @@ sketchPad.addEventListener('mouseover', function(event) {
         drawGradient(event.target);
     }
     else if (isStandard) {
-        event.target.style['background-color'] = color;
+        console.log(color);
+        event.target.style.backgroundColor = color;
     }
 })
 
@@ -41,6 +42,13 @@ function drawGradient(e) {
     let targetColor = getComputedStyle(e).backgroundColor;
     console.log(targetColor)
     console.log(`Pen Color is ${color}`);
+}
+
+// Function to add alpha to rgb
+function addAlpha(rgb, a) {
+    match = /rgba?\((\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*(,\s*\d+[\.\d+]*)*\)/g.exec(rgb);
+    a = a > 1 ? (a / 100) : a;
+    return "rgba(" + [match[1],match[2],match[3],a].join(',') +")";
 }
 
 // Function to convert hex to rgba
