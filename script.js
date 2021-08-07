@@ -1,4 +1,5 @@
 // Set the color variable
+const COLOR = 'rgba(0, 0, 0, 1)';
 let color = 'rgba(0, 0, 0, 1)'; // black color
 let isColorRandom = false;
 let isStandard = true;
@@ -22,23 +23,45 @@ sketchPad.addEventListener('mouseover', function(event) {
         color = randomizeColor();
     }
     else if (penGradient.checked) {
-        if (!event.target.style.backgroundColor) {
-            color = color.replace(/[^,]+(?=\))/g, "0.1");
-        } else {
-            let squareColor = event.target.style.backgroundColor;
-            color = gradientColor(squareColor);
-        }
-        // console.log(event.target);
-        // console.log(event.target.style.backgroundColor);
+        // if (!event.target.style.backgroundColor) {
+        //     color = color.replace(/[^,]+(?=\))/g, "0.1");
+        // } else {
+        //     let squareColor = event.target.style['background-color'];
+        //     color = gradientColor(squareColor);
+        // }
+        drawGradient(event.target);
     }
-    event.target.style['background-color'] = color;
-
+    else if (isStandard) {
+        event.target.style['background-color'] = color;
+    }
 })
+
+function drawGradient(e) {
+    console.log(e);
+    let targetColor = getComputedStyle(e).backgroundColor;
+    console.log(targetColor)
+    console.log(`Pen Color is ${color}`);
+}
+
+// Function to convert hex to rgba
+function hexToRgbA(hex){
+    var c;
+    if(/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)){
+        c= hex.substring(1).split('');
+        if(c.length== 3){
+            c= [c[0], c[0], c[1], c[1], c[2], c[2]];
+        }
+        c= '0x'+c.join('');
+        return 'rgba('+[(c>>16)&255, (c>>8)&255, c&255].join(',')+',1)';
+    }
+    throw new Error('Bad Hex');
+}
 
 // Listen for color change
 const colorPicker = document.getElementById("color-picker");
 colorPicker.addEventListener("change", function(event) {
-    color = event.target.value;
+    color = hexToRgbA(event.target.value);
+    console.log(`Color from color picker is ${color}`)
 })
 
 // Listen for rainbow mode
@@ -56,7 +79,7 @@ function randomizeColor() {
     let g = Math.floor(Math.random() * 255);
     let b = Math.floor(Math.random() * 255);
     let a = 1;
-    return `rgb(${r}, ${g}, ${b}, ${a})`;
+    return `rgba(${r}, ${g}, ${b}, ${a})`;
 }
 
 // Listen for eraser mode
@@ -77,10 +100,10 @@ function gradientColor(c) {
     console.log(`Color input is ${c}`);
     let initialColor = c;
     let alpha = initialColor.match(/[^,]+(?=\))/g)[0];
-    console.log(`Initial alpha is ${alpha}`);
+    // console.log(`Initial alpha is ${alpha}`);
     alpha = parseFloat(alpha) + 0.1;
     console.log(alpha)
     let newColor = initialColor.replace(/[^,]+(?=\))/g, `${alpha}`)
-    console.log(newColor);
+    // console.log(newColor);
     return newColor;
 }
