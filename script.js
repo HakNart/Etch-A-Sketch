@@ -25,22 +25,17 @@ sketchPad.addEventListener('mouseover', function(event) {
         color = randomizeColor();
     }
     else if (penGradient.checked) {
-        // if (!event.target.style.backgroundColor) {
-        //     color = color.replace(/[^,]+(?=\))/g, "0.1");
-        // } else {
-        //     let squareColor = event.target.style['background-color'];
-        //     color = gradientColor(squareColor);
-        // }
         drawGradient(event.target);
     }
     else if (isStandard) {
-        console.log(color);
-        event.target.style.backgroundColor = color;
+        drawStandard(event.target);
     }
-    // console.log(`Sketch pad background color is ${getComputedStyle(sketchPad).backgroundColor}`);
-    // console.log(`Color is ${color}`);
-    // console.log(`Square color is ${getComputedStyle(event.target).backgroundColor}`)
 })
+
+function drawStandard(e) {
+    e.grad = 10;
+    e.style.backgroundColor = color;
+}
 
 function drawGradient(e) {
     let targetColor = getComputedStyle(e).backgroundColor;
@@ -50,9 +45,6 @@ function drawGradient(e) {
         let newColor = addAlpha(color, (e.grad / 10));
         e.style.backgroundColor = newColor;
     }
-    console.log(targetColor)
-    console.log(`Pen Color is ${color}`);
-    console.log(getComputedStyle(sketchPad).backgroundColor);
 }
 
 // Function to add alpha to rgb
