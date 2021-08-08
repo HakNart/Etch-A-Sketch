@@ -10,6 +10,7 @@ const sketchPad = document.querySelector("#sketch-pad");
 function createSquare() {
     const square = document.createElement("div");
     square.classList.add("square");
+    square.grad = 0;
     return square;
 }
 
@@ -36,14 +37,19 @@ sketchPad.addEventListener('mouseover', function(event) {
         console.log(color);
         event.target.style.backgroundColor = color;
     }
-    console.log(`Sketch pad background color is ${getComputedStyle(sketchPad).backgroundColor}`);
-    console.log(`Color is ${color}`);
-    console.log(`Square color is ${event.target.style.backgroundColor}`)
+    // console.log(`Sketch pad background color is ${getComputedStyle(sketchPad).backgroundColor}`);
+    // console.log(`Color is ${color}`);
+    // console.log(`Square color is ${getComputedStyle(event.target).backgroundColor}`)
 })
 
 function drawGradient(e) {
-    console.log(e);
     let targetColor = getComputedStyle(e).backgroundColor;
+    let sPColor = getComputedStyle(sketchPad).backgroundColor;
+    if (e.grad < 10) {
+        e.grad += 1;
+        let newColor = addAlpha(color, (e.grad / 10));
+        e.style.backgroundColor = newColor;
+    }
     console.log(targetColor)
     console.log(`Pen Color is ${color}`);
     console.log(getComputedStyle(sketchPad).backgroundColor);
