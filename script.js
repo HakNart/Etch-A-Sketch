@@ -22,15 +22,12 @@ for (let i = 0; i < 16**2; i++) {
 sketchPad.addEventListener('mouseover', function(event) {
     console.log(`Original Square color is ${getComputedStyle(event.target).backgroundColor}`)
     if (isColorRandom) {
-        updatePenMode("random");
         drawRandom(event.target);
     }
     else if (penGradient.checked) {
-        updatePenMode("gradient");
         drawGradient(event.target);
     }
-    else if (isStandard) {
-        updatePenMode("standard")
+    else if (penStandard.checked) {
         drawStandard(event.target);
     }
 })
@@ -46,10 +43,13 @@ function updatePenMode(str) {
             break;
         case "random":
             [isStandard, isGradient, isColorRandom] = [false, false, true];
+            break;
     }
+    console.log(`Random is ${isColorRandom}`);
 }
 
 function drawRandom(e) {
+    e.grad = 10;
     e.style.backgroundColor = randomizeColor();
 }
 
@@ -115,7 +115,7 @@ rainbow.addEventListener('click', rainbowColor)
 
 // Set flag for random color to true
 function rainbowColor() {
-    isColorRandom = true;
+    updatePenMode("random");
 }
 
 // Create random rgb value for colors
@@ -136,18 +136,15 @@ function eraserMode() {
 }
 
 // Gradient mode
-const penModes = document.querySelectorAll("input[name='pen-mode']");
+const penSettings = document.querySelector("#settings");
 const penStandard = document.querySelector("#standard");
 const penGradient = document.querySelector("#gradient");
 
-function gradientColor(c) {
-    console.log(`Color input is ${c}`);
-    let initialColor = c;
-    let alpha = initialColor.match(/[^,]+(?=\))/g)[0];
-    // console.log(`Initial alpha is ${alpha}`);
-    alpha = parseFloat(alpha) + 0.1;
-    console.log(alpha)
-    let newColor = initialColor.replace(/[^,]+(?=\))/g, `${alpha}`)
-    // console.log(newColor);
-    return newColor;
-}
+penSettings.addEventListener("change", function(e) {
+    if (penStandard.checked) {
+        updatePenMode("standard");
+    } 
+    else if (penGradient.checked) {
+        updatePenMode("gradient");
+    } 
+})
