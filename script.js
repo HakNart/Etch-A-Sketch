@@ -1,6 +1,6 @@
 // Set the color variable
-const COLOR = 'rgba(0, 0, 0, 1)';
-let color = 'rgba(0, 0, 0, 1)'; // black color
+const COLOR = 'rgb(0, 0, 0)';
+let color = 'rgb(0, 0, 0)'; // black color
 let isColorRandom = false;
 let isStandard = true;
 let isGradient = false;
@@ -19,6 +19,7 @@ for (let i = 0; i < 16**2; i++) {
 
 // Listen for mouse over a square and change its color
 sketchPad.addEventListener('mouseover', function(event) {
+    console.log(`Original Square color is ${getComputedStyle(event.target).backgroundColor}`)
     if (isColorRandom) {
         color = randomizeColor();
     }
@@ -35,6 +36,9 @@ sketchPad.addEventListener('mouseover', function(event) {
         console.log(color);
         event.target.style.backgroundColor = color;
     }
+    console.log(`Sketch pad background color is ${getComputedStyle(sketchPad).backgroundColor}`);
+    console.log(`Color is ${color}`);
+    console.log(`Square color is ${event.target.style.backgroundColor}`)
 })
 
 function drawGradient(e) {
@@ -42,13 +46,14 @@ function drawGradient(e) {
     let targetColor = getComputedStyle(e).backgroundColor;
     console.log(targetColor)
     console.log(`Pen Color is ${color}`);
+    console.log(getComputedStyle(sketchPad).backgroundColor);
 }
 
 // Function to add alpha to rgb
 function addAlpha(rgb, a) {
     match = /rgba?\((\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*(,\s*\d+[\.\d+]*)*\)/g.exec(rgb);
     a = a > 1 ? (a / 100) : a;
-    return "rgba(" + [match[1],match[2],match[3],a].join(',') +")";
+    return "rgba(" + [match[1],match[2],match[3],a].join(', ') +")";
 }
 
 // Function to convert hex to rgba
@@ -65,10 +70,23 @@ function hexToRgbA(hex){
     throw new Error('Bad Hex');
 }
 
+function hexToRgb(hex){
+    var c;
+    if(/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)){
+        c= hex.substring(1).split('');
+        if(c.length== 3){
+            c= [c[0], c[0], c[1], c[1], c[2], c[2]];
+        }
+        c= '0x'+c.join('');
+        return 'rgb('+[(c>>16)&255, (c>>8)&255, c&255].join(',') + ')';
+    }
+    throw new Error('Bad Hex');
+}
+
 // Listen for color change
 const colorPicker = document.getElementById("color-picker");
 colorPicker.addEventListener("change", function(event) {
-    color = hexToRgbA(event.target.value);
+    color = hexToRgb(event.target.value);
     console.log(`Color from color picker is ${color}`)
 })
 
