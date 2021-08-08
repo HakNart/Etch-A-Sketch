@@ -22,15 +22,32 @@ for (let i = 0; i < 16**2; i++) {
 sketchPad.addEventListener('mouseover', function(event) {
     console.log(`Original Square color is ${getComputedStyle(event.target).backgroundColor}`)
     if (isColorRandom) {
+        updatePenMode("random");
         drawRandom(event.target);
     }
     else if (penGradient.checked) {
+        updatePenMode("gradient");
         drawGradient(event.target);
     }
     else if (isStandard) {
+        updatePenMode("standard")
         drawStandard(event.target);
     }
 })
+
+// Update pen mode whenever there are changes
+function updatePenMode(str) {
+    switch (str) {
+        case "standard":
+            [isStandard, isGradient, isColorRandom] = [true, false, false];
+            break;
+        case "gradient":
+            [isStandard, isGradient, isColorRandom] = [false, true, false];
+            break;
+        case "random":
+            [isStandard, isGradient, isColorRandom] = [false, false, true];
+    }
+}
 
 function drawRandom(e) {
     e.style.backgroundColor = randomizeColor();
