@@ -22,7 +22,7 @@ for (let i = 0; i < 16**2; i++) {
 sketchPad.addEventListener('mouseover', function(event) {
     console.log(`Original Square color is ${getComputedStyle(event.target).backgroundColor}`)
     if (isColorRandom) {
-        color = randomizeColor();
+        drawRandom(event.target);
     }
     else if (penGradient.checked) {
         drawGradient(event.target);
@@ -31,6 +31,10 @@ sketchPad.addEventListener('mouseover', function(event) {
         drawStandard(event.target);
     }
 })
+
+function drawRandom(e) {
+    e.style.backgroundColor = randomizeColor();
+}
 
 function drawStandard(e) {
     e.grad = 10;
@@ -102,8 +106,7 @@ function randomizeColor() {
     let r = Math.floor(Math.random() * 255);
     let g = Math.floor(Math.random() * 255);
     let b = Math.floor(Math.random() * 255);
-    let a = 1;
-    return `rgba(${r}, ${g}, ${b}, ${a})`;
+    return `rgb(${r}, ${g}, ${b})`;
 }
 
 // Listen for eraser mode
