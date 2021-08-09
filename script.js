@@ -6,6 +6,14 @@ let isStandard = true;
 let isGradient = false;
 let isEraseMode = false;
 
+function setDefault() {
+    color = COLOR; // black color
+    isColorRandom = false;
+    isStandard = true;
+    isGradient = false;
+    isEraseMode = false;
+}
+
 // Create 16x16 pixel squares on the for the sketch pad
 const sketchPad = document.querySelector("#sketch-pad");
 function createSquare() {
