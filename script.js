@@ -12,7 +12,7 @@ function setDefault() {
     isStandard = true;
     isGradient = false;
     isEraseMode = false;
-    createSketchPad(16);
+    createSketchPad(50);
 }
 
 // Create 16x16 pixel squares on the for the sketch pad
@@ -25,6 +25,8 @@ function createSquare() {
 }
 
 function createSketchPad(size) {
+    sketchPad.style['grid-template-columns'] = `repeat(${size}, 1fr)`;
+    sketchPad.style['grid-template-rows'] = `repeat(${size}, 1fr)`;
     for (let i = 0; i < size**2; i++) {
         sketchPad.appendChild(createSquare());
     }
