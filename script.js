@@ -12,6 +12,7 @@ function setDefault() {
     isStandard = true;
     isGradient = false;
     isEraseMode = false;
+    createSketchPad(16);
 }
 
 // Create 16x16 pixel squares on the for the sketch pad
@@ -23,9 +24,12 @@ function createSquare() {
     return square;
 }
 
-for (let i = 0; i < 16**2; i++) {
-    sketchPad.appendChild(createSquare());
+function createSketchPad(size) {
+    for (let i = 0; i < size**2; i++) {
+        sketchPad.appendChild(createSquare());
+    }
 }
+
 
 // Listen for mouse over a square and change its color
 sketchPad.addEventListener('mouseover', function(event) {
@@ -169,3 +173,5 @@ penSettings.addEventListener("change", function(e) {
 // Listen to reset button to be clicked and reset the settings
 const reset = document.querySelector("#reset");
 reset.addEventListener("click", setDefault);
+
+document.addEventListener("DOMContentLoaded", setDefault);
