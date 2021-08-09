@@ -165,3 +165,7 @@ penSettings.addEventListener("change", function(e) {
         updatePenMode("gradient");
     } 
 })
+
+// Listen to reset button to be clicked and reset the settings
+const reset = document.querySelector("#reset");
+reset.addEventListener("click", setDefault);
