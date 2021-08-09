@@ -12,7 +12,7 @@ function setDefault() {
     isStandard = true;
     isGradient = false;
     isEraseMode = false;
-    createSketchPad(16);
+    createSketchPad(64);
 }
 
 // Create 16x16 pixel squares on the for the sketch pad
@@ -179,5 +179,11 @@ penSettings.addEventListener("change", function(e) {
 // Listen to reset button to be clicked and reset the settings
 const reset = document.querySelector("#reset");
 reset.addEventListener("click", setDefault);
+
+// Listen and track the size value of the size slider
+const sizer = document.querySelector("#size");
+sizer.addEventListener("change", function(e) {
+    createSketchPad(sizer.value);
+})
 
 document.addEventListener("DOMContentLoaded", setDefault);
