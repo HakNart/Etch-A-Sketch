@@ -4,6 +4,7 @@ let color = 'rgb(0, 0, 0)'; // black color
 let isColorRandom = false;
 let isStandard = true;
 let isGradient = false;
+let isEraseMode = false;
 
 // Create 16x16 pixel squares on the for the sketch pad
 const sketchPad = document.querySelector("#sketch-pad");
@@ -20,15 +21,17 @@ for (let i = 0; i < 16**2; i++) {
 
 // Listen for mouse over a square and change its color
 sketchPad.addEventListener('mouseover', function(event) {
-    console.log(`Original Square color is ${getComputedStyle(event.target).backgroundColor}`)
     if (isColorRandom) {
         drawRandom(event.target);
     }
-    else if (penGradient.checked) {
+    else if (isGradient) {
         drawGradient(event.target);
     }
-    else if (penStandard.checked) {
+    else if (isStandard) {
         drawStandard(event.target);
+    }
+    else if (isEraseMode) {
+        eraseDrawing(event.target);
     }
 })
 
@@ -44,8 +47,15 @@ function updatePenMode(str) {
         case "random":
             [isStandard, isGradient, isColorRandom] = [false, false, true];
             break;
+        case "erase":
+            [isStandard, isGradient, isColorRandom] = [false, false, false];
+            break;
     }
-    console.log(`Random is ${isColorRandom}`);
+}
+
+function eraseDrawing(e) {
+    e.grad = 0;
+    e.style.backgroundColor = getComputedStyle(sketchPad).backgroundColor;
 }
 
 function drawRandom(e) {
@@ -106,7 +116,6 @@ function hexToRgb(hex){
 const colorPicker = document.getElementById("color-picker");
 colorPicker.addEventListener("change", function(event) {
     color = hexToRgb(event.target.value);
-    console.log(`Color from color picker is ${color}`)
 })
 
 // Listen for rainbow mode
@@ -116,6 +125,7 @@ rainbow.addEventListener('click', rainbowColor)
 // Set flag for random color to true
 function rainbowColor() {
     updatePenMode("random");
+    isEraseMode = true;
 }
 
 // Create random rgb value for colors
@@ -131,8 +141,7 @@ const eraser = document.getElementById('eraser');
 eraser.addEventListener('click', eraserMode)
 
 function eraserMode() {
-    isColorRandom = false;
-    color = getComputedStyle(sketchPad).backgroundColor;
+    updatePenMode("erase");
 }
 
 // Gradient mode
