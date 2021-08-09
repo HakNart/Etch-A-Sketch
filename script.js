@@ -12,7 +12,7 @@ function setDefault() {
     isStandard = true;
     isGradient = false;
     isEraseMode = false;
-    createSketchPad(50);
+    createSketchPad(16);
 }
 
 // Create 16x16 pixel squares on the for the sketch pad
@@ -24,7 +24,11 @@ function createSquare() {
     return square;
 }
 
+// Remove all the existing childnodes and create new sketch pad with predefined dimension
 function createSketchPad(size) {
+    while (sketchPad.hasChildNodes()) {
+        sketchPad.removeChild(sketchPad.firstChild);
+    }
     sketchPad.style['grid-template-columns'] = `repeat(${size}, 1fr)`;
     sketchPad.style['grid-template-rows'] = `repeat(${size}, 1fr)`;
     for (let i = 0; i < size**2; i++) {
@@ -139,7 +143,6 @@ rainbow.addEventListener('click', rainbowColor)
 // Set flag for random color to true
 function rainbowColor() {
     updatePenMode("random");
-    isEraseMode = true;
 }
 
 // Create random rgb value for colors
@@ -156,6 +159,7 @@ eraser.addEventListener('click', eraserMode)
 
 function eraserMode() {
     updatePenMode("erase");
+    isEraseMode = true;
 }
 
 // Gradient mode
