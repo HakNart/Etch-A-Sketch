@@ -156,7 +156,11 @@ reset.addEventListener("click", setDefault);
 // Listen and track the size value of the size slider
 const sizer = document.querySelector("#size");
 sizer.addEventListener("change", function(e) {
+    sizeOutput.textContent = sizer.value;
     createSketchPad(sizer.value);
 })
+
+// Track the size from the slider
+const sizeOutput = document.querySelector("#size-output");
 
 document.addEventListener("DOMContentLoaded", setDefault);
