@@ -12,7 +12,7 @@ function setDefault() {
     isStandard = true;
     isGradient = false;
     isEraseMode = false;
-    createSketchPad(64);
+    createSketchPad(16);
 }
 
 // Create 16x16 pixel squares on the for the sketch pad
