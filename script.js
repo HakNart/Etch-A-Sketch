@@ -160,7 +160,6 @@ reset.addEventListener("click", setDefault);
 const sizer = document.querySelector("#size");
 sizer.addEventListener("change", function(e) {
     sizeOutput.value = sizer.value;
-    console.log(sizer.value);
     createSketchPad(sizer.value);
 })
 
