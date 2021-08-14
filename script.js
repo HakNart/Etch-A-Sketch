@@ -42,18 +42,20 @@ function createSketchPad(size) {
 
 // Listen for mouse over a square and change its color
 sketchPad.addEventListener('mouseover', function(event) {
-    if (isColorRandom) {
-        drawRandom(event.target);
-    }
-    else if (isGradient) {
-        drawGradient(event.target);
-    }
-    else if (isStandard) {
-        drawStandard(event.target);
-    }
-    else if (isEraseMode) {
-        eraseDrawing(event.target);
-    }
+    if (event.target != sketchPad) {
+        if (isColorRandom) {
+            drawRandom(event.target);
+        }
+        else if (isGradient) {
+            drawGradient(event.target);
+        }
+        else if (isStandard) {
+            drawStandard(event.target);
+        }
+        else if (isEraseMode) {
+            eraseDrawing(event.target);
+        }
+    } 
 })
 
 // Update pen mode whenever there are changes
