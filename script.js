@@ -106,10 +106,25 @@ function addAlpha(rgb, a) {
     return "rgba(" + [match[1],match[2],match[3],a].join(', ') +")";
 }
 
+// Function to convert hex value to rgb
+function hexToRgb(hex){
+    var c;
+    if(/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)){
+        c= hex.substring(1).split('');
+        if(c.length== 3){
+            c= [c[0], c[0], c[1], c[1], c[2], c[2]];
+        }
+        c= '0x'+c.join('');
+        return 'rgb('+[(c>>16)&255, (c>>8)&255, c&255].join(',') + ')';
+    }
+    throw new Error('Bad Hex');
+}
+
 // Listen for color change
 const colorPicker = document.getElementById("color-picker");
 colorPicker.addEventListener("change", function(event) {
     color = hexToRgb(event.target.value);
+    console.log(color);
 })
 
 // Listen for rainbow mode
