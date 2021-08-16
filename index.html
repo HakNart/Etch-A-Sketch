@@ -8,24 +8,27 @@
     </head>
     <body>
         <h1>Etch a Sketch</h1>
-        <div id='settings'>
-            <button id='reset'>Reset</button>
-            <div id='pen-settting'>
-                <label for='color'>Pick Color</label>
-                <input type='color' id='color-picker' name='color' value='#000000'>
-                <p>Pen Mode</p>
-                <input type='radio' id='standard' name='pen-mode' value='standard'>
-                <label for="standard">standard</label>
-                <input type="radio" name="pen-mode" id="gradient" value='gradient'>
-                <label for='gradient'>gradient</label>
+        <div id='drawing-board'>
+            <div id='settings'>
+                <button id='reset'>Reset</button>
+                <div id='pen-settting'>
+                    <label for='color'>Pick Color</label>
+                    <input type='color' id='color-picker' name='color' value='#000000'>
+                    <p>Pen Mode</p>
+                    <input type='radio' id='standard' name='pen-mode' value='standard'>
+                    <label for="standard">standard</label>
+                    <input type="radio" name="pen-mode" id="gradient" value='gradient'>
+                    <label for='gradient'>gradient</label>
+                </div>
+                <button id='rainbow'>Rainbow</button>
+                <button id='eraser'>Eraser</button>
+                <label for='size'>Pixel Size</label>
+                <input type="range" id='size' name='sizer' min='1' max='100' value='16'>
+                <input type='number' id='size-output' name='size-output'></input>
             </div>
-            <button id='rainbow'>Rainbow</button>
-            <button id='eraser'>Eraser</button>
-            <label for='size'>Pixel Size</label>
-            <input type="range" id='size' name='sizer' min='1' max='64' value='16'>
-            <input type='number' id='size-output' name='size-output'></input>
+            <div id='sketch-pad'>
         </div>
-        <div id='sketch-pad'>
+        
 
         </div>
         <footer id='credit'>Made by: Nart</footer>
