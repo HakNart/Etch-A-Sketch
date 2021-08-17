@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Palette+Mosaic&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600&display=swap');
 
 body {
     display: flex;
@@ -19,6 +20,7 @@ body {
     align-items: center;
     justify-content: space-around;
     border-radius: 3%;
+    font-family: 'Space Grotesk', sans-serif;
 }
 h1 {
     font-family: "Palette Mosaic", cursive;
