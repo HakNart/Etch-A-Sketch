@@ -80,7 +80,12 @@ h1 {
     cursor: pointer;
 }
 
-.button:focus{
+/* .button:focus{
+    background-color: #4caf50;
+    color: white;
+} */
+
+.button-click{
     background-color: #4caf50;
     color: white;
 }

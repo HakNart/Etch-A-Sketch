@@ -188,4 +188,16 @@ sizeOutput.addEventListener("change", function(e) {
     sizer.dispatchEvent(change);
 })
 
+const focusedButtons =  document.querySelectorAll("#rainbow, #eraser");
+focusedButtons.forEach(button => {
+    button.addEventListener("click", (e) => {
+        if(!e.target.classList.contains("button-click")) {
+            e.target.classList.add('button-click');
+        } else {
+            e.target.classList.remove('button-click');
+        }
+        // console.log(e.target.classList.contains("button"));
+    })
+});
+
 document.addEventListener("DOMContentLoaded", setDefault);
