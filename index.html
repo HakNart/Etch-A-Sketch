@@ -17,13 +17,16 @@
                     <label for="standard">Standard</label>
                     <input type="radio" name="pen-mode" id="gradient" value='gradient'>
                     <label for='gradient'>Gradient</label>
+                    <button id='rainbow' class='button'>Rainbow</button>
+                    <button id='eraser' class='button'>Eraser</button>
                 </div>
-                <button id='rainbow' class='button'>Rainbow</button>
-                <button id='eraser' class='button'>Eraser</button>
-                <label for='size'>Pixel Size</label>
-                <input type="range" id='size' name='sizer' min='1' max='100' value='16'>
-                <input type='number' id='size-output' name='size-output'></input>
-                <button id='reset' class='button'>Reset</button>
+                <div id="other-settings">
+                    <button id='reset' class='button'>Reset</button>
+                    <label for='size'>Resolution</label>
+                    <input type="range" id='size' name='sizer' min='1' max='100' value='16'>
+                    <input type='number' id='size-output' name='size-output'></input>
+                </div>
+                
             </div>
             <div id='sketch-pad'>
         </div>
