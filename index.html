@@ -10,21 +10,20 @@
         <h1>Etch a Sketch</h1>
         <div id='drawing-board'>
             <div id='settings'>
-                <button id='reset' class='button'>Reset</button>
-                <div id='pen-settting'>
-                    <label for='color'>Pick Color</label>
+                <div id='pen-setting'>
                     <input type='color' id='color-picker' name='color' value='#000000'>
                     <p>Pen Mode</p>
                     <input type='radio' id='standard' name='pen-mode' value='standard'>
-                    <label for="standard">standard</label>
+                    <label for="standard">Standard</label>
                     <input type="radio" name="pen-mode" id="gradient" value='gradient'>
-                    <label for='gradient'>gradient</label>
+                    <label for='gradient'>Gradient</label>
                 </div>
                 <button id='rainbow' class='button'>Rainbow</button>
                 <button id='eraser' class='button'>Eraser</button>
                 <label for='size'>Pixel Size</label>
                 <input type="range" id='size' name='sizer' min='1' max='100' value='16'>
                 <input type='number' id='size-output' name='size-output'></input>
+                <button id='reset' class='button'>Reset</button>
             </div>
             <div id='sketch-pad'>
         </div>
