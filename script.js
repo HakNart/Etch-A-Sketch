@@ -205,8 +205,8 @@ focusedButtons.forEach(button => {
         //     e.target.classList.remove('button-click');
         // }
         // console.log(e.target.classList.contains("button"));
-        // console.log(e.target);
-        // console.log(focusedButtons)
+        console.log(e.target);
+        console.log(focusedButtons)
     })
 });
 
