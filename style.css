@@ -29,8 +29,8 @@ h1 {
 }
 
 #sketch-pad {
-    width: 720px;
-    height: 720px;
+    width: 640px;
+    height: 640px;
     background-color: #fff;
     border: 1px solid black;
     display: grid;
