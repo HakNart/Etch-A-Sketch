@@ -205,8 +205,17 @@ focusedButtons.forEach(button => {
         //     e.target.classList.remove('button-click');
         // }
         // console.log(e.target.classList.contains("button"));
-        console.log(e.target);
-        console.log(focusedButtons)
+        // console.log(e.target.classList);
+        // focusedButtons.forEach(element => {
+            
+        //     console.log(element.classList);
+        // });
+        if (!e.target.classList.contains('button-click')) {
+            focusedButtons.forEach(button => {
+                button.classList.remove('button-click');
+            })
+            e.target.classList.add('button-click');
+        }
     })
 });
 
