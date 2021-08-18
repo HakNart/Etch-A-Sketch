@@ -6,16 +6,34 @@ let isStandard = true;
 let isGradient = false;
 let isEraseMode = false;
 
-function setDefault() {
+function defaultValues() {
     color = COLOR; // black color
     isColorRandom = false;
     isStandard = true;
     isGradient = false;
     isEraseMode = false;
+}
+
+function defaultButtonMode() {
+    focusedButtons.forEach(button => {
+        button.classList.remove('button-click');
+    })
+    penStandard.classList.add('button-click');
+}
+
+function setDefault() {
+    // color = COLOR; // black color
+    // isColorRandom = false;
+    // isStandard = true;
+    // isGradient = false;
+    // isEraseMode = false;
+    // sizer.value = 16;
+    // sizeOutput.value = 16;
     sizer.value = 16;
     sizeOutput.value = 16;
+    defaultValues();
+    defaultButtonMode();
     createSketchPad(16);
-
 }
 
 // Create 16x16 pixel squares on the for the sketch pad
