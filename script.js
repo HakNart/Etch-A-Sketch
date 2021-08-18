@@ -22,13 +22,6 @@ function defaultButtonMode() {
 }
 
 function setDefault() {
-    // color = COLOR; // black color
-    // isColorRandom = false;
-    // isStandard = true;
-    // isGradient = false;
-    // isEraseMode = false;
-    // sizer.value = 16;
-    // sizeOutput.value = 16;
     sizer.value = 16;
     sizeOutput.value = 16;
     defaultValues();
@@ -178,14 +171,6 @@ const penSettings = document.querySelector("#settings");
 const penStandard = document.querySelector("#standard");
 const penGradient = document.querySelector("#gradient");
 
-// penSettings.addEventListener("change", function(e) {
-//     if (penStandard.checked) {
-//         updatePenMode("standard");
-//     } 
-//     else if (penGradient.checked) {
-//         updatePenMode("gradient");
-//     } 
-// })
 penStandard.addEventListener('click', () => {
     updatePenMode('standard');
 })
@@ -217,17 +202,6 @@ sizeOutput.addEventListener("change", function(e) {
 const focusedButtons =  document.querySelectorAll(".toggle");
 focusedButtons.forEach(button => {
     button.addEventListener("click", (e) => {
-        // if(!e.target.classList.contains("button-click")) {
-        //     e.target.classList.add('button-click');
-        // } else {
-        //     e.target.classList.remove('button-click');
-        // }
-        // console.log(e.target.classList.contains("button"));
-        // console.log(e.target.classList);
-        // focusedButtons.forEach(element => {
-            
-        //     console.log(element.classList);
-        // });
         if (!e.target.classList.contains('button-click')) {
             focusedButtons.forEach(button => {
                 button.classList.remove('button-click');
