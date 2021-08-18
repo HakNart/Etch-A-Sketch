@@ -160,14 +160,22 @@ const penSettings = document.querySelector("#settings");
 const penStandard = document.querySelector("#standard");
 const penGradient = document.querySelector("#gradient");
 
-penSettings.addEventListener("change", function(e) {
-    if (penStandard.checked) {
-        updatePenMode("standard");
-    } 
-    else if (penGradient.checked) {
-        updatePenMode("gradient");
-    } 
+// penSettings.addEventListener("change", function(e) {
+//     if (penStandard.checked) {
+//         updatePenMode("standard");
+//     } 
+//     else if (penGradient.checked) {
+//         updatePenMode("gradient");
+//     } 
+// })
+penStandard.addEventListener('click', () => {
+    updatePenMode('standard');
 })
+
+penGradient.addEventListener('click', () => {
+    updatePenMode('gradient');
+})
+
 
 // Listen to reset button to be clicked and reset the settings
 const reset = document.querySelector("#reset");
@@ -188,15 +196,17 @@ sizeOutput.addEventListener("change", function(e) {
     sizer.dispatchEvent(change);
 })
 
-const focusedButtons =  document.querySelectorAll("#rainbow, #eraser");
+const focusedButtons =  document.querySelectorAll(".toggle");
 focusedButtons.forEach(button => {
     button.addEventListener("click", (e) => {
-        if(!e.target.classList.contains("button-click")) {
-            e.target.classList.add('button-click');
-        } else {
-            e.target.classList.remove('button-click');
-        }
+        // if(!e.target.classList.contains("button-click")) {
+        //     e.target.classList.add('button-click');
+        // } else {
+        //     e.target.classList.remove('button-click');
+        // }
         // console.log(e.target.classList.contains("button"));
+        // console.log(e.target);
+        // console.log(focusedButtons)
     })
 });
 
